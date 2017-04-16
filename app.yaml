@@ -2,8 +2,8 @@ runtime: php55
 api_version: 1
 
 handlers:
-- url: /*.js
-  script: crCount.js
+- url: /staticdata
+  static_dir: staticdata
 
 - url: /.*
   script: crCountMain.php
