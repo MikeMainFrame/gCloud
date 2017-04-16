@@ -4,6 +4,9 @@ api_version: 1
 handlers:
 - url: /staticdata
   static_dir: staticdata
+  
+- url: /crUpdate.php
+  script: crUpdate.php
 
 - url: /.*
   script: crCountMain.php
