@@ -1,3 +1,4 @@
+<?php echo "1"; ?>
 <svg viewBox="0 0 4400 2800"  
      style="background: #002 ; font-family: 'Catamaran', sans-serif;"  
      id="zcanvas" version="1.1"  
@@ -46,3 +47,4 @@
   </g>
   <script type="application/ecmascript" xlink:href="crCount.js" ></script>    
 </svg>
+<?php echo "2"; ?>
