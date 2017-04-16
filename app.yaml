@@ -7,6 +7,9 @@ handlers:
   
 - url: /crCount.php
   script: crCount.php
+  
+- url: /staticdata/crCount.js
+  script: /staticdata/crCount.js
 
 - url: /.*
   script: crCountMain.php
