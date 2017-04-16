@@ -5,8 +5,8 @@ handlers:
 - url: /staticdata
   static_dir: staticdata
   
-- url: /crUpdate.php
-  script: crUpdate.php
+- url: /crCount.php
+  script: crCount.php
 
 - url: /.*
   script: crCountMain.php
