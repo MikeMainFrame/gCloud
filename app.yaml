@@ -2,5 +2,8 @@ runtime: php55
 api_version: 1
 
 handlers:
+- url: /*.js
+  script: crCount.js
+
 - url: /.*
   script: crCountMain.php
