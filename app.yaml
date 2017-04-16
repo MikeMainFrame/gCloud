@@ -2,7 +2,7 @@ runtime: php55
 api_version: 1
 
 handlers:
-- url: *.js
+- url: /*.js
   script: crCount.js
 
 - url: /.*
