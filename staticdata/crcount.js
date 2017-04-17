@@ -34,7 +34,9 @@
  
   var now = new Date();
   now = parseInt((now.getFullYear() * 10000) + ((now.getMonth() + 1) * 100) + now.getDate());
-  
+
+  preIntialSetup();
+
 /***
 *  build visible buttons - predefined tag+price
 */
