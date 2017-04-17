@@ -2,7 +2,7 @@
   error_reporting(E_ALL);
   ini_set("display_errors", 1);  
   
-  $fname = dirname(__FILE__) . '\\crCountLog.xml';  
+  $fname = dirname(__FILE__) . '\\staticdata\\crCountLog.xml';  
   $dom = new DOMDocument; 
   $dom->load($fname, LIBXML_DTDLOAD|LIBXML_DTDATTR); // made by triticum 
   $root = $dom->documentElement;                     // we have the root entry */
