@@ -3,7 +3,7 @@
   ini_set("display_errors", 1);  
   
   $postdata = file_get_contents("php://input"); 
-  
+  echo $postdata;
   $fname = dirname(__FILE__) . '//staticdata//crCountLog.xml';  
   $dom = new DOMDocument; 
   $dom->load($fname, LIBXML_DTDLOAD|LIBXML_DTDATTR); // made by triticum 
