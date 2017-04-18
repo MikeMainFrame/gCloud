@@ -1,9 +1,11 @@
 <?php
   error_reporting(E_ALL);
   ini_set("display_errors", 1);  
+  use Google\Cloud\Storage\StorageClient;
   
   $postdata = file_get_contents("php://input"); 
   echo $postdata;
+  
   $fname = dirname(__FILE__) . '//staticdata//crCountLog.xml';  
   $dom = new DOMDocument; 
   $dom->load($fname, LIBXML_DTDLOAD|LIBXML_DTDATTR); // made by triticum 
@@ -13,5 +15,6 @@
   $row->appendXML($postdata);
   $root->appendChild($row);
   $dom->save($fname);                                // At this point we save it - casted !
+  // file_put_contents("gs://crcountlog/crCountLog.xml", $dom->saveXML());
   echo "good";
 ?>
