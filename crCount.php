@@ -8,9 +8,9 @@
   $bucket = $storage->bucket("crcountlog");
   $object = $bucket->object('crCountLog.xml');
   $stringXML = $object->downloadAsString();
-  
+  */
   $postdata = file_get_contents("php://input"); 
-  echo $postdata;*/
+  //echo $postdata;
   
   //$fname = dirname(__FILE__) . '//staticdata//crCountLog.xml';  
   
