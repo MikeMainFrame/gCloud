@@ -15,6 +15,7 @@
   //$fname = dirname(__FILE__) . '//staticdata//crCountLog.xml';  
   
   $zFileContents = file_get_contents("gs://crcountlog/crCountLog.xml");
+  echo$ zFileContents; 
   $dom = new DOMDocument; 
   //$dom->load($fname, LIBXML_DTDLOAD|LIBXML_DTDATTR); // made by triticum 
   $dom->loadXML($zFileContents); 
