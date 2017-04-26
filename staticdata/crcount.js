@@ -179,7 +179,15 @@ function wrapUp() {
   transaction.appendChild(zDay);
   
   var xmlhttp = new XMLHttpRequest();    
-  xmlhttp.onreadystatechange=function() { if (xmlhttp.readyState==4 && xmlhttp.status==200) {var zstatus = document.getElementById('zstatus'); zstatus.textContent = xmlhttp.responseText }} ;
+  
+  xmlhttp.onreadystatechange=function() { 
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      var zstatus = document.getElementById('zstatus');
+      zstatus.textContent = xmlhttp.responseText;
+      products = [];
+      rebuildList();
+    }
+  } ;
   xmlhttp.open("POST","crCount.php",true);  
   xmlhttp.send(transaction);  
 }
