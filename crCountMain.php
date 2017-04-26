@@ -44,5 +44,5 @@
       <text    x="1550" y="2740" text-anchor="start" fill="#888" id="zmessage">mike was here and try to communicate</text>  
     </g>    
   </g>
-  <script type="application/ecmascript" xlink:href="staticdata/crcount1.js" ></script>    
+  <script type="application/ecmascript" xlink:href="staticdata/crcount.js" ></script>    
 </svg>
