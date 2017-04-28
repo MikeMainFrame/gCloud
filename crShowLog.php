@@ -7,7 +7,7 @@
   $dom->loadXML($zFileContents); 
 
   $xsl = new DOMDocument;
-  $xname = dirname(__FILE__) . '\\staticdata\\crStatic.xsl';
+  $xname = dirname(__FILE__) . '//staticdata//crStatic.xsl';
   $xsl->load($xname);
   $proc = new XSLTProcessor;
   $proc->importStyleSheet($xsl);
