@@ -80,7 +80,7 @@
   <xsl:choose>
     <xsl:when test="$list">
       <xsl:variable name="first" select="$list[1]"/>
-      <xsl:variable name="price" select="document('menu51.xml')/root/item[@name = @product]/@price" />
+      <xsl:variable name="price" select="document('crMenu51.xml')/root/item[@name = @product]/@price" />
       <xsl:variable name="between">
       
         <xsl:call-template name="summasumarum">
