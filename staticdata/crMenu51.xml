@@ -1,0 +1,64 @@
+<root>
+  <group title="pizze">
+  <item name="Margherita" price="60" details="tomat - mozzarella - basilikum"/>
+  <item name="Capricciosa" price="70" details="tomat - mozzarella -artiskok"/>
+  <item name="Quattro Stagioni" price="70" details="tomat - mozzarella - artiskok - rejer - skinke - champignon"/>
+  <item name="Bresola" price="75" details="tomat - mozzarella - bresaola - cherry tomat - ruula - parmesan flager"/>
+  <item name="Gorgonzola" price="70" details="tomat - mozzarella - gorgonzola - spinat"/>
+  <item name="Piccante" price="70" details="tomat - mozzarella - italiansk salami - chilli"/>
+  <item name="Rosmarino" price="70" details="tomat - mozzarella -italiansk bacon - kartofler - rosmarin"/>
+  <item name="Caprese" price="70" details="tomat - mozzarella - frisk tomat - bøffelmozzarella - pesto"/>
+  <item name="Parma" price="75" details="tomat - mozzarella - gorgonzola - parmaskinke"/>
+  <item name="Parmigiana" price="70" details="tomat - mozzarella - grillet aubergine - cherry tomat - basilikum"/>
+  <item name="Pollo" price="70" details="tomat - mozzarella - kylling - champignon"/>
+  <item name="Hawaii" price="68" details="tomat - mozzarella - skinke - ananas"/>
+  <item name="Pepperoni" price="70" details="tomat - mozzarella - bacon - pepperoni - hvidløg - chilli"/>
+  <item name="Prosciutto" price="70" details="tomat - mozzarella - skinke"/>
+  <item name="Bologna" price="70" details="tomat - mozzarella - kødsovs"/>
+  <item name="Tonno" price="70" details="tomat - mozzarella - tun - artiskok - rødløg"/>
+  <item name="Marinara" price="80" details="tomat - mozzarella - rejer - muslinger - hvidløg"/>
+  <item name="Napoletana" price="70" details="tomat - mozzarella - ansjoser - kapers - oliven"/>
+  <item name="Carne" price="75" details="tomat - mozzarella - oksekød - peberfrugt - rødløg"/>
+  <item name="Mascarpone" price="70" details="tomat - mozzarella - skinke - kartoffel - mascarpone - rosmarin"/>
+  <item name="Carpaccio" price="80" details="tomat - mozzarella - oksemørbrad - rucula - parmesan flager"/>
+  <item name="Quattro Formaggi" price="70" details="tomat - mozzarella - gorgonzola - talleggio - parmesan"/>
+  <item name="Vegetariana" price="70" details="tomat - mozzarella - grillede grønsager"/>
+  <item name="Tartufo" price="75" details="tomat - mozzarella - svampe - trøffelsovs - parmesan"/>
+  <item name="Calzone" price="70" details="tomat - mozzarella - skinke"/>
+  </group>
+  <group title="pasta">
+  <item name="Lasagna Originale" price="80" details="sauce bolognese - bechamel"/>
+  <item name="Tortellini Gorgonzola" price="70" details="sauce gorgonzola"/> 
+  <item name="Tortellini Tartufo" price="75" details="sauce trøffel m/carl johan"/>
+  <item name="Tortellini Boscaiola" price="65" details="skinke - ærter - champignon"/> 
+  <item name="Tagliatelle Dolce Vita" price="75" details="grønsager - okse - pesto - tomat"/>
+  <item name="Tagliatelle Mari e Monti" price="75" details="rejer - champignon - pinjekerner - pesto - tomat - fløde"/>
+  <item name="Spaghetti Carbonara" price="70" details="fløde - æg - bacon"/>
+  <item name="Spaghetti a Matriciana" price="70" details="bacon - løg - tomat"/>
+  <item name="Spaghetti Bolognese" price="70" details="sauce bolognese"/>
+  </group>
+  <group title="antipasta">
+  <item name="Specialle" price="80" details="?"/>
+  <item name="Antipasta Toto e Pepino" price="120" details="diverse specialiteter"/>
+  <item name="Vitello Tonnato" price="75" details="kalv - tun - kapers"/>
+  <item name="Prosciuttoe e melone" price="75" details="parmaskinke - melon"/>
+  <item name="Crepe gamberi e spinaci" price="70" details="spinat - rejer - parmesan"/>
+  <item name="Bruschetta classica" price="50" details="tomat - hvidløg - basilikum"/>
+  <item name="Insalata caprese" price="70" details="mozzarella - tomat - basilikum"/>
+  <item name="Cappaccio di filleto e rucola" price="75" details="oksemørbrad - rucula - parmesan"/>
+  </group>
+  <group title="dessert">
+  <item name="Tiramisu" price="40" details="kaffe - kakao - mascarpone"/>
+  <item name="Torte della nonne" price="40" details="æbletærte"/>
+  <item name="Gelati" price="40" details="is"/>
+  </group>
+  <group title="panini">
+  <item name="Panino al Pollo" price="45" details="kylling - rucola - pesto"/>
+  <item name="Panino al Prosciutto" price="45" details="parmaskinke - rucola - pesto"/>
+  <item name="Panino al vitello tonnato" price="45" details="kalv - tun - kapers - rucola - pesto"/>
+  <item name="Panino alla Bresaola " price="45" details="bresaola - rucola - pesto"/>
+  <item name="Panino Caprese " price="45" details="bøffelmozzarella - iceberg"/>
+  <item name="Panino al Salama " price="45" details="salami - iceberg"/>
+  </group>
+  </root>
+  
