@@ -8,8 +8,8 @@ handlers:
 - url: /crCount.php
   script: crCount.php
   
-  - url: /crStaticLog.php
-  script: crStaticLog.php
+  - url: /crShowLog.php
+  script: crShowLog.php
 
 - url: /staticdata/crCount.js
   script: /staticdata/crCount.js
