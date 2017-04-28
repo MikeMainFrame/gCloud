@@ -79,7 +79,6 @@
   <xsl:param name="list"/>
   <xsl:choose>
     <xsl:when test="$list">
-    88
       <xsl:variable name="first" select="$list[1]"/>
       <xsl:variable name="price" select="document('menu51.xml')/root/item[@name = @product]/@price" />
       <xsl:variable name="between">
