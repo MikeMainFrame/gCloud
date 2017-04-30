@@ -14,5 +14,4 @@
   $clientXML = $proc->transformToDoc($dom);
       
   echo $clientXML->saveXML();
-  echo file_get_contents("app.yaml");
 ?>
