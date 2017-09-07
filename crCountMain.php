@@ -5,7 +5,7 @@
      xmlns="http://www.w3.org/2000/svg">
   <title>cash register :: by TRITICUM </title>
   <defs>
-    <link xmlns="http://www.w3.org/1999/xhtml" href="http://fonts.googleapis.com/css?family=Scope+One" type="text/css" rel="stylesheet" /> 
+    <link xmlns="http://www.w3.org/1999/xhtml" href="https://fonts.googleapis.com/css?family=Scope+One" type="text/css" rel="stylesheet" /> 
     <radialGradient id="date"  cx="0.50" cy="0.50" r="0.50" fx="0.50" fy="0.50"><stop offset="0.00"   stop-color="#ff80ff" /><stop offset="1.00"   stop-color="#804080" /></radialGradient>    
     <radialGradient id="final" cx="0.50" cy="0.50" r="0.50" fx="0.50" fy="0.50"><stop offset="0.00"   stop-color="#ffff00" /><stop offset="1.00"   stop-color="#ff6000" /></radialGradient>    
     <radialGradient id="blue"  cx="0.50" cy="0.50" r="0.50" fx="0.50" fy="0.50"><stop offset="0.00"   stop-color="#0000ff" /><stop offset="1.00"   stop-color="#000080" /></radialGradient>    
