@@ -100,8 +100,7 @@ class Sql implements DataModelInterface {
         return $pdo->lastInsertId();
     }
 
-    public function read($id)
-    {
+    public function read($id)    {
         $pdo = $this->newConnection();
         $statement = $pdo->prepare('SELECT * FROM books WHERE id = :id');
         $statement->bindValue('id', $id, PDO::PARAM_INT);
@@ -110,8 +109,7 @@ class Sql implements DataModelInterface {
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function update($book)
-    {
+    public function update($book)    {
         $this->verifyBook($book);
         $pdo = $this->newConnection();
         $assignments = array_map(
@@ -130,8 +128,7 @@ class Sql implements DataModelInterface {
         return $statement->execute($values);
     }
 
-    public function delete($id)
-    {
+    public function delete($id)    {
         $pdo = $this->newConnection();
         $statement = $pdo->prepare('DELETE FROM books WHERE id = :id');
         $statement->bindValue('id', $id, PDO::PARAM_INT);
@@ -140,8 +137,7 @@ class Sql implements DataModelInterface {
         return $statement->rowCount();
     }
 
-    public static function getMysqlDsn($dbName, $port, $connectionName = null)
-    {
+    public static function getMysqlDsn($dbName, $port, $connectionName = null)    {
         if ($connectionName) {
             return sprintf('mysql:unix_socket=/cloudsql/%s;dbname=%s',
                 $connectionName,
@@ -151,14 +147,4 @@ class Sql implements DataModelInterface {
         return sprintf('mysql:host=127.0.0.1;port=%s;dbname=%s', $port, $dbName);
     }
 
-    public static function getPostgresDsn($dbName, $port, $connectionName = null)
-    {
-        if ($connectionName) {
-            return sprintf('pgsql:host=/cloudsql/%s;dbname=%s',
-                $connectionName,
-                $dbName);
-        }
-
-        return sprintf('pgsql:host=127.0.0.1;port=%s;dbname=%s', $port, $dbName);
-    }
-}
+   }
