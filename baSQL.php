@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-namespace Google\Cloud\Samples\Bookshelf\DataModel;
+namespace Google\Cloud\Samples\trxshelf\DataModel;
 
 use PDO;
 
@@ -29,7 +29,7 @@ class Sql implements DataModelInterface {
     private $password;
 
     /**
-     * Creates the SQL books table if it doesn't already exist.
+     * Creates the SQL trxs table if it doesn't already exist.
      */
     public function __construct($dsn, $user, $password) {
         $this->dsn = $dsn;
@@ -48,7 +48,7 @@ class Sql implements DataModelInterface {
         }, $columns);
         $columnText = implode(', ', $columns);
         $pdo = $this->newConnection();
-        $pdo->query("CREATE TABLE IF NOT EXISTS books ($columnText)");
+        $pdo->query("CREATE TABLE IF NOT EXISTS trxs ($columnText)");
     }
 
     /**
@@ -64,10 +64,10 @@ class Sql implements DataModelInterface {
         return $pdo;
     }
 
-    public function listBooks($limit = 10, $cursor = null)   {
+    public function listtrxs($limit = 10, $cursor = null)   {
     
         $pdo = $this->newConnection();
-        $query = 'SELECT * FROM books ORDER BY id LIMIT 9999';
+        $query = 'SELECT * FROM trxs ORDER BY id LIMIT 9999';
         $statement = $pdo->prepare($query);
         $statement->execute();
         $rows = array();
@@ -79,38 +79,36 @@ class Sql implements DataModelInterface {
         return  $rows;
     }
 
-    public function create($book, $id = null)     {
-        $this->verifyBook($book);
-        if ($id) {
-            $book['id'] = $id;
-        }
+    public function create($trx, $id = null)     {
+        $this->verifytrx($trx);
+        if ($id) $trx['id'] = $id;
         $pdo = $this->newConnection();
-        $names = array_keys($book);
+        $names = array_keys($trx);
         $placeHolders = array_map(function ($key) {
             return ":$key";
         }, $names);
         $sql = sprintf(
-            'INSERT INTO books (%s) VALUES (%s)',
+            'INSERT INTO trxs (%s) VALUES (%s)',
             implode(', ', $names),
             implode(', ', $placeHolders)
         );
         $statement = $pdo->prepare($sql);
-        $statement->execute($book);
+        $statement->execute($trx);
 
         return $pdo->lastInsertId();
     }
 
     public function read($id)    {
         $pdo = $this->newConnection();
-        $statement = $pdo->prepare('SELECT * FROM books WHERE id = :id');
+        $statement = $pdo->prepare('SELECT * FROM trxs WHERE id = :id');
         $statement->bindValue('id', $id, PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function update($book)    {
-        $this->verifyBook($book);
+    public function update($trx)    {
+        $this->verifytrx($trx);
         $pdo = $this->newConnection();
         $assignments = array_map(
             function ($column) {
@@ -119,21 +117,21 @@ class Sql implements DataModelInterface {
             $this->columnNames
         );
         $assignmentString = implode(',', $assignments);
-        $sql = "UPDATE books SET $assignmentString WHERE id = :id";
+        $sql = "UPDATE trxs SET $assignmentString WHERE id = :id";
         $statement = $pdo->prepare($sql);
         $values = array_merge(
             array_fill_keys($this->columnNames, null),
-            $book
+            $trx
         );
         return $statement->execute($values);
     }
 
     public function delete($id)    {
         $pdo = $this->newConnection();
-        $statement = $pdo->prepare('DELETE FROM books WHERE id = :id');
+        $statement = $pdo->prepare('DELETE FROM trxs WHERE id = :id');
         $statement->bindValue('id', $id, PDO::PARAM_INT);
         $statement->execute();
-
+        // row count is important
         return $statement->rowCount();
     }
 
