@@ -15,13 +15,12 @@
  * limitations under the License.
  */
 
-namespace Google\Cloud\Samples\trxshelf\DataModel;
+namespace Google\Cloud\Samples\bookhelf\DataModel;
 
 use PDO;
 
 /**
  * Class Sql implements the DataModelInterface with a mysql database.
- *
  */
 class Sql implements DataModelInterface {
     private $dsn;
@@ -36,21 +35,8 @@ class Sql implements DataModelInterface {
         $this->user = $user;
         $this->password = $password;
 
-        $columns = array(
-            'id int ',
-            'text VARCHAR(255)',
-            'date date',
-            'amount bigint',
-        );
-
-        $this->columnNames = array_map(function ($columnDefinition) {
-            return explode(' ', $columnDefinition)[0];
-        }, $columns);
-        $columnText = implode(', ', $columns);
         $pdo = $this->newConnection();
-        $pdo->query("CREATE TABLE IF NOT EXISTS trxs ($columnText)");
     }
-
     /**
      * Creates a new PDO instance and sets error mode to exception.
      */
@@ -67,7 +53,7 @@ class Sql implements DataModelInterface {
     public function listtrxs($limit = 10, $cursor = null)   {
     
         $pdo = $this->newConnection();
-        $query = 'SELECT * FROM trxs ORDER BY id LIMIT 9999';
+        $query = 'SELECT * FROM trxs ORDER BY date desc LIMIT 9999';
         $statement = $pdo->prepare($query);
         $statement->execute();
         $rows = array();
