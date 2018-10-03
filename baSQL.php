@@ -1,19 +1,4 @@
 <?php
-/*
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 namespace Google\Cloud\Samples\bookhelf\DataModel;
 
@@ -27,9 +12,6 @@ class Sql implements DataModelInterface {
     private $user;
     private $password;
 
-    /**
-     * Creates the SQL trxs table if it doesn't already exist.
-     */
     public function __construct($dsn, $user, $password) {
         $this->dsn = $dsn;
         $this->user = $user;
@@ -37,9 +19,6 @@ class Sql implements DataModelInterface {
 
         $pdo = $this->newConnection();
     }
-    /**
-     * Creates a new PDO instance and sets error mode to exception.
-     */
     private function newConnection()    {
         $pdo = new PDO($this->dsn,
                        $this->user,
@@ -50,11 +29,11 @@ class Sql implements DataModelInterface {
         return $pdo;
     }
 
-    public function listtrxs($limit = 10, $cursor = null)   {
+    public function listTrxs($search = "%")   {
     
         $pdo = $this->newConnection();
-        $query = 'SELECT * FROM trxs ORDER BY date desc LIMIT 9999';
-        $statement = $pdo->prepare($query);
+        $statement = $pdo->prepare("SELECT * FROM trxs WHERE text like :search ORDER BY date desc LIMIT 9999");      
+        $statement->bindValue('search', $search, PDO::PARAM_INT);
         $statement->execute();
         $rows = array();
         
@@ -63,25 +42,6 @@ class Sql implements DataModelInterface {
         }
 
         return  $rows;
-    }
-
-    public function create($trx, $id = null)     {
-        $this->verifytrx($trx);
-        if ($id) $trx['id'] = $id;
-        $pdo = $this->newConnection();
-        $names = array_keys($trx);
-        $placeHolders = array_map(function ($key) {
-            return ":$key";
-        }, $names);
-        $sql = sprintf(
-            'INSERT INTO trxs (%s) VALUES (%s)',
-            implode(', ', $names),
-            implode(', ', $placeHolders)
-        );
-        $statement = $pdo->prepare($sql);
-        $statement->execute($trx);
-
-        return $pdo->lastInsertId();
     }
 
     public function read($id)    {
