@@ -32,8 +32,8 @@ class Sql implements DataModelInterface {
     public function listTrxs($search = "%")   {
     
         $pdo = $this->newConnection();
-        $statement = $pdo->prepare("SELECT * FROM trxs WHERE text like :search ORDER BY date desc LIMIT 9999");      
-        $statement->bindValue('search', $search, PDO::PARAM_INT);
+        $statement = $pdo->prepare("SELECT * FROM trxs WHERE text like ? ORDER BY date desc LIMIT 9999");      
+        $statement->bindValue(1, $search, PDO::PARAM_INT);
         $statement->execute();
         $rows = array();
         
@@ -46,38 +46,30 @@ class Sql implements DataModelInterface {
 
     public function read($id)    {
         $pdo = $this->newConnection();
-        $statement = $pdo->prepare('SELECT * FROM trxs WHERE id = :id');
-        $statement->bindValue('id', $id, PDO::PARAM_INT);
+        $statement = $pdo->prepare('SELECT * FROM trxs WHERE id = ?');
+        $statement->bindValue(1, $id, PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     public function update($trx)    {
-        $this->verifytrx($trx);
         $pdo = $this->newConnection();
-        $assignments = array_map(
-            function ($column) {
-                return "$column=:$column";
-            },
-            $this->columnNames
-        );
-        $assignmentString = implode(',', $assignments);
-        $sql = "UPDATE trxs SET $assignmentString WHERE id = :id";
-        $statement = $pdo->prepare($sql);
-        $values = array_merge(
-            array_fill_keys($this->columnNames, null),
-            $trx
-        );
-        return $statement->execute($values);
+        $statement = $pdo->prepare("UPDATE trxs SET date = ?, text = ?, amount = ? WHERE id = ?");
+        $statement->bindValue(1, $trx->date, PDO::PARAM_STR);
+        $statement->bindValue(2, $trx->text, PDO::PARAM_STR);        
+        $statement->bindValue(3, $trx->amount, PDO::PARAM_INT);        
+        $statement->bindValue(4, $trx->id, PDO::PARAM_INT);                
+        
+        return $statement->execute();
     }
 
     public function delete($id)    {
         $pdo = $this->newConnection();
-        $statement = $pdo->prepare('DELETE FROM trxs WHERE id = :id');
-        $statement->bindValue('id', $id, PDO::PARAM_INT);
+        $statement = $pdo->prepare('DELETE FROM trxs WHERE id = ?);
+        $statement->bindValue(1, $id, PDO::PARAM_INT);
         $statement->execute();
-        // row count is important
+        // row count is the only info - not raw data ....
         return $statement->rowCount();
     }
 
