@@ -19,6 +19,7 @@ class Sql implements DataModelInterface {
 
         $pdo = $this->newConnection();
     }
+    
     private function newConnection()    {
         $pdo = new PDO($this->dsn,
                        $this->user,
@@ -73,14 +74,5 @@ class Sql implements DataModelInterface {
         return $statement->rowCount();
     }
 
-    public static function getMysqlDsn($dbName, $port, $connectionName = null)    {
-        if ($connectionName) {
-            return sprintf('mysql:unix_socket=/cloudsql/%s;dbname=%s',
-                $connectionName,
-                $dbName);
-        }
-
-        return sprintf('mysql:host=127.0.0.1;port=%s;dbname=%s', $port, $dbName);
-    }
 
    }
