@@ -1,4 +1,9 @@
 <?php
   include 'baSQL.php';
-  $slam = new Sql(dsn, user, password);
+
+  $connection = getenv('connection');
+  $password = getenv('password');
+  $user = getenv('user');
+
+  $slam = new Sql(connection, user, password);
   $myData = $slam->listTrxs("%");
