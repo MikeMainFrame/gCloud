@@ -6,7 +6,7 @@
 
 $search = "%";
 
-$connection = "gcloud19631205:europe-west1:miketriticum2";
+$connection = "mysql:unix_socket=/cloudsql/gcloud19631205:europe-west1:miketriticum2";
 $user = "root";
 $password = "MCMLX1i1";
 $pdo = new PDO($connection, $user, $password);
