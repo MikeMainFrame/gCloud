@@ -7,3 +7,7 @@
 
   $slam = new Sql(connection, user, password);
   $myData = $slam->listTrxs("%");
+  echo $myData;
+  echo $connection;
+  echo $password;
+  echo $user;
