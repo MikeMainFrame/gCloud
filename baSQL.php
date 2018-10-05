@@ -18,7 +18,7 @@ $pdo = new PDO($connection, $user, $password);
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       array_push($rows, $row);
+      echo  $row;
     }
 
-    echo  $rows;
 ?>
