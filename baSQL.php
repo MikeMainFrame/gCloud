@@ -1,11 +1,13 @@
 <?php
 
-use PDO;
+namespace Google\Cloud\Samples\Bookshelf\DataModel;
 
+use PDO;
 /**
- * Class Sql implements the DataModelInterface with a mysql database.
+ * Class Sql implements the DataModelInterface with a mysql or postgres database.
+ *
  */
-class Sql implements PDO {
+class Sql implements DataModelInterface
     private $dsn;
     private $user;
     private $password;
