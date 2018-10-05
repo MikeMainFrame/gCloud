@@ -1,4 +1,9 @@
 <?php
+
+  error_reporting(E_ALL);
+  ini_set("display_errors", 1); 
+
+  echo "starting ...";
   include 'baSQL.php';
 
   $connection = getenv('connection');
@@ -11,3 +16,5 @@
   echo $connection;
   echo $password;
   echo $user;
+
+?>
