@@ -67,7 +67,7 @@ class Sql implements DataModelInterface {
 
     public function delete($id)    {
         $pdo = $this->newConnection();
-        $statement = $pdo->prepare('DELETE FROM trxs WHERE id = ?);
+        $statement = $pdo->prepare('DELETE FROM trxs WHERE id = ?');
         $statement->bindValue(1, $id, PDO::PARAM_INT);
         $statement->execute();
         // row count is the only info - not raw data ....
