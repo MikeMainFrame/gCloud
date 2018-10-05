@@ -11,7 +11,7 @@ $user = "root";
 $password = "MCMLX1i1";
 $pdo = new PDO($connection, $user, $password);
 
-    $statement = $pdo->prepare("SELECT * FROM trxs ORDER BY date desc LIMIT 9999");      
+    $statement = $pdo->prepare("SELECT * FROM trx.trxs ORDER BY date desc LIMIT 9999");      
     //$statement->bindValue(1, $search, PDO::PARAM_INT);
     $statement->execute();
     $rows = array();
