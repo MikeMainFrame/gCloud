@@ -10,11 +10,11 @@
   $password = getenv('password');
   $user = getenv('user');
   echo $connection;
-  //include 'baSQL.php';
+  include 'baSQL.php';
 
 
-  // $myData = $slam->listTrxs("%");
- // echo $myData;
+  $myData = $slam->listTrxs("%");
+  echo $myData;
   echo $connection;
   echo $password;
   echo $user;
