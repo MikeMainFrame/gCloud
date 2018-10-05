@@ -9,7 +9,7 @@
   $connection = getenv('connection');
   $password = getenv('password');
   $user = getenv('user');
-
+ echo $connection;
   include 'baSQL.php';
 
 
