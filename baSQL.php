@@ -1,8 +1,9 @@
 <?php
 
+  error_reporting(E_ALL);
+  ini_set("display_errors", 1); 
+  echo "starting SQL ...";
 
-
-// create the PDO client
 $search = "%";
 
 $pdo = new PDO($connection, $user, $password);
