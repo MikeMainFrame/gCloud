@@ -4,11 +4,14 @@
   ini_set("display_errors", 1); 
 
   echo "starting ...";
-  include 'baSQL.php';
+
 
   $connection = getenv('connection');
   $password = getenv('password');
   $user = getenv('user');
+
+  include 'baSQL.php';
+
 
   $slam = new Sql(connection, user, password);
   $myData = $slam->listTrxs("%");
