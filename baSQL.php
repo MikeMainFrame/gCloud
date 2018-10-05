@@ -20,5 +20,5 @@ $pdo = new PDO($connection, $user, $password);
       array_push($rows, $row);
     }
 
-    return  $rows;
+    echo  $rows;
 ?>
