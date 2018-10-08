@@ -4,16 +4,8 @@
   ini_set("display_errors", 1); 
 
   echo "starting ...";
-
-
-  $connection = getenv('connection');
-  $password = getenv('password');
-  $user = getenv('user');
-  echo $connection;
-  echo $password;
-  echo $user;
-
+  echo date();
+  
   include 'baSQL.php';
 
-  
 ?>
