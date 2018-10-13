@@ -1,9 +1,0 @@
-runtime: php55
-api_version: 1
-
-handlers:
-- url: /staticdata
-  static_dir: staticdata
-  
-- url: /baApp.php
-  script: /baApp.php
