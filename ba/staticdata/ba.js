@@ -11,7 +11,7 @@
   function getData () {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.overrideMimeType("application/json");
-    xmlhttp.onreadystatechange=function() {zOutput.textContent = zOutput.textContent + xmlhttp.responseText; };    
+    xmlhttp.onreadystatechange=function() {zOutput.textContent = xmlhttp.responseText; };    
     xmlhttp.open("GET","baSQL.php" + "?search=" + zSearch.textContent);
     xmlhttp.send();
   } 
