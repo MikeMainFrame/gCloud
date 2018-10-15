@@ -10,10 +10,11 @@
       xmlhttp.overrideMimeType("application/json");
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === 4 
-        && xmlhttp.status === 200) 
+        && xmlhttp.status === 200) {
         
-        document.getElementById("zOutput").textContent = "";
-        renderTable(xmlhttp.responseText);
+          document.getElementById("zOutput").textContent = "";
+          renderTable(xmlhttp.responseText);
+        }
       };    
       xmlhttp.open("GET","baSQL.php" + "?search=" + document.getElementById("zSearch").textContent);
       xmlhttp.send();
