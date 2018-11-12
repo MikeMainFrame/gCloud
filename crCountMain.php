@@ -11,6 +11,9 @@
     <radialGradient id="blue"  cx="0.50" cy="0.50" r="0.50" fx="0.50" fy="0.50"><stop offset="0.00"   stop-color="#0000ff" /><stop offset="1.00"   stop-color="#000080" /></radialGradient>    
     <radialGradient id="push"  cx="0.50" cy="0.50" r="0.50" fx="0.50" fy="0.50"><stop offset="0.00"   stop-color="#ff0000" /><stop offset="1.00"   stop-color="#ff6000" /></radialGradient>    
     <radialGradient id="red"   cx="0.50" cy="0.50" r="0.50" fx="0.50" fy="0.50"><stop offset="0.00"   stop-color="#ff0000" /><stop offset="1.00"   stop-color="#800000" /></radialGradient>    
+    <radialGradient id="aTurquise" gradientUnits="userSpaceOnUse" cx="500" cy="500" r="500" fx="500" fy="500">   <stop offset="80%" stop-color="#38C0B0"></stop><stop offset="100%" stop-color="#40E0D0"></stop></radialGradient> 
+    <radialGradient id="aPurple" gradientUnits="userSpaceOnUse" cx="500" cy="500" r="500" fx="500" fy="500"><stop offset="80%" stop-color="#e0e"></stop><stop offset="100%" stop-color="#f4f"></stop></radialGradient> 
+ 
     <symbol id="icon-spinner9" viewBox="0 0 16 16">
     <title>spinner9</title>
       <path class="path1" d="M8 0c-4.355 0-7.898 3.481-7.998 7.812 0.092-3.779 2.966-6.812 6.498-6.812 3.59 0 6.5 3.134 6.5 7 0 0.828 0.672 1.5 1.5 1.5s1.5-0.672 1.5-1.5c0-4.418-3.582-8-8-8zM8 16c4.355 0 7.898-3.481 7.998-7.812-0.092 3.779-2.966 6.812-6.498 6.812-3.59 0-6.5-3.134-6.5-7 0-0.828-0.672-1.5-1.5-1.5s-1.5 0.672-1.5 1.5c0 4.418 3.582 8 8 8z"></path>
