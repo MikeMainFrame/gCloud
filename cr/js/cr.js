@@ -6,12 +6,26 @@
   var now = new Date();
   now = parseInt((now.getFullYear() * 10000) + ((now.getMonth() + 1) * 100) + now.getDate());
 
-  preInitialSetup();
+		xhrServer()
+			.then(function(responseText) {
+        preInitialSetup(JSON.parse(responseText));
+			})
+			.catch(console.log(status));
+
+	function xhrServer() {
+		return new Promise(function(serverData, reject) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "crMenu.json");
+			xhr.onload = function() {if (xhr.readyState === 4) serverData(xhr.responseText);};
+			xhr.onerror = function() {reject(xhr.statusText);};
+			xhr.send();
+		});
+   }
 
 /***
 *  build visible buttons - predefined tag+price
 */
-function preInitialSetup() { 
+function preInitialSetup(choices) { 
  
   svgdoc.addEventListener('click', handleClick, false);  
   
@@ -40,7 +54,6 @@ function preInitialSetup() {
       x = 2900;
     } else x = x + 450;   
     
-     
     var rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');            
     rect.setAttribute("x", x);
     rect.setAttribute("y", y);    
@@ -258,9 +271,7 @@ function subDates() {
      rect.setAttribute("height", 75);    
      rect.setAttribute("rx", 15);    
      rect.setAttribute("fill", 'rgba(0,0,255,0.5)');                      
-     rect.setAttribute("zdate", thisDate);                      
-     
-     
+     rect.setAttribute("zdate", thisDate);                          
      
      var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');            
      text.setAttribute("x", x + 150);
