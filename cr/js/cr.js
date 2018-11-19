@@ -1,21 +1,21 @@
-
+(function main {
   var svgdoc = document.getElementById('zcanvas');
   var products = [], prices = [], values = [], zfactor = 1;
   var now = new Date();
   var toDay = parseInt((now.getFullYear() * 1.0E4) + ((now.getMonth() + 1) * 1.0E2) + now.getDate(), 10);
 
-	xhrServer()
-		.then(function(responseText) {
-      preInitialSetup(JSON.parse(responseText));
-		})
-		.catch(console.log(status));
+  handleData();
 
+async function handleData () {
+  preInitialSetup(await xhrServer());
+}
 function xhrServer() {
-  return new Promise(function(serverData, reject) {
+  return new Promise(function (continueWith) {
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) continueWith(JSON.parse(xhr.responseText))
+    };
     xhr.open("GET", "https://storage.googleapis.com/gcloud19631205.appspot.com/crMenu.json");
-    xhr.onload = function() {if (xhr.readyState === 4) serverData(xhr.responseText);};
-    xhr.onerror = function() {reject(xhr.statusText);};
     xhr.send();
   });
 }
@@ -288,3 +288,4 @@ function formatT(base) {
   var i = parseInt(base.substr(4,2) * 3);
   return base.substr(6,2) + m.substr(i, 3) + base.substr(0,4);
 }
+})();
