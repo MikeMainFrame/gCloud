@@ -15,7 +15,7 @@ function xhrServer() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) continueWith(JSON.parse(xhr.responseText))
     };
-    xhr.open("GET", "crMenu.json");
+    xhr.open("GET", "crMenu.php");
     xhr.send();
   });
 }
