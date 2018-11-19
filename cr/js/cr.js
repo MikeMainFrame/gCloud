@@ -15,7 +15,7 @@ function xhrServer() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) continueWith(JSON.parse(xhr.responseText))
     };
-    xhr.open("GET", "https://storage.googleapis.com/gcloud19631205.appspot.com/crMenu.json");
+    xhr.open("GET", "crMenu.json");
     xhr.send();
   });
 }
