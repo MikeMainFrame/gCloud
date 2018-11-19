@@ -10,16 +10,15 @@
 		})
 		.catch(console.log(status));
 
-	function xhrServer() {
-		return new Promise(function(serverData, reject) {
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "crMenu.json");
-			xhr.onload = function() {if (xhr.readyState === 4) serverData(xhr.responseText);};
-			xhr.onerror = function() {reject(xhr.statusText);};
-			xhr.send();
-		});
-   }
-
+function xhrServer() {
+  return new Promise(function(serverData, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://storage.googleapis.com/gcloud19631205.appspot.com/crMenu.json");
+    xhr.onload = function() {if (xhr.readyState === 4) serverData(xhr.responseText);};
+    xhr.onerror = function() {reject(xhr.statusText);};
+    xhr.send();
+  });
+}
 /***
 *  build visible buttons - predefined tag+price
 */
