@@ -1,4 +1,4 @@
-(function main {
+(function main () {
   var svgdoc = document.getElementById('zcanvas');
   var products = [], prices = [], values = [], zfactor = 1;
   var now = new Date();
