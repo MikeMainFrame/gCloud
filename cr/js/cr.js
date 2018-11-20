@@ -13,7 +13,7 @@ function xhrServer() {
   return new Promise(function (continueWith) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) continueWith(JSON.parse(xhr.responseText))
+      if (xhr.readyState === 4) continueWith(JSON.parse(xhr.responseText));
     };
     xhr.open("GET", "crMenu.php");
     xhr.send();
@@ -73,17 +73,17 @@ function preInitialSetup(choices) {
 
     g.appendChild(text);
 
-    var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+    text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
     text.setAttribute("x", x + 200);
     text.setAttribute("y", y + 144);
     text.setAttribute("font-size", 72);
-    text.setAttribute("id", "c" + parseInt(ix + 1));
+    text.setAttribute("id", "c" + parseInt(ix + 1, 10));
     text.setAttribute("text-anchor", 'middle');
     text.textContent = "";
 
     g.appendChild(text);
 
-    var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+    text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
     text.setAttribute("x", x + 370);
     text.setAttribute("y", y + 220);
     text.setAttribute("fill", '#fff');
@@ -107,7 +107,7 @@ function handleClick(evt) {
   var scope = evt.target;
 
   if (scope.getAttribute("zprice")) {
-    index = parseInt(scope.getAttribute("zindex"));
+    index = parseInt(scope.getAttribute("zindex"), 10);
     products[index] = scope.getAttribute("zproduct");
     values[index]=values[index]+zfactor;
     scope.setAttribute("fill", '#00f');
@@ -140,7 +140,17 @@ function toogleFactor(toogle) {
   toogle.setAttribute("zfactor", zfactor);
 }
 /***
-*  save at server - transaction wise
+* save using google storage - gs://project/bucket/object
+* no mvc, just inject below fragment ... 7 lines of code
+*
+  $countLog = new DOMDocument;
+  $countLog->loadXML(file_get_contents("gs://crcountlog/crCountLog.xml"));
+  $root = $countLog->documentElement;
+  $newNode = $countLog->createDocumentFragment();
+  $newNode->appendXML(file_get_contents("php://input"));
+  $root->appendChild($newNode);
+  file_put_contents("gs://crcountlog/crCountLog.xml", $countLog->saveXML());*
+
 */
 function wrapUp() {
 
@@ -150,7 +160,7 @@ function wrapUp() {
   zDay.setAttribute("date",document.getElementById('zstatus').textContent);
 
   for (ix = 0; ix < products.length; ix++) {
-    if (parseInt(values[ix]) > 0) {
+    if (parseInt(values[ix], 10) > 0) {
       var zSlot = transaction.createElement("item");
       zSlot.setAttribute("value",values[ix]);
       zSlot.setAttribute("product",products[ix]);
@@ -162,7 +172,8 @@ function wrapUp() {
   var xmlhttp = new XMLHttpRequest();
 
   xmlhttp.onreadystatechange=function() {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    if (xmlhttp.readyState === 4
+    && xmlhttp.status === 200) {
       var zstatus = document.getElementById('zstatus');
       zstatus.textContent = xmlhttp.responseText;
       products = [];
@@ -184,11 +195,11 @@ function rebuildList() {
       g.setAttribute("fill", '#fff');
       g.setAttribute("font-size", 48);
 
-  var y=300; zSum = 0;
+  var y = 300; zSum = 0;
 
   for (ix = 0; ix < products.length; ix++) {
     var jx = ix + 1;
-    if (parseInt(values[jx]) > 0) {
+    if (parseInt(values[jx], 10) > 0) {
       var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
       text.setAttribute("text-anchor", 'end');
       text.setAttribute("x", 1650);
@@ -197,7 +208,7 @@ function rebuildList() {
 
       g.appendChild(text);
 
-      var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+      text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
       text.setAttribute("text-anchor", 'start');
       text.setAttribute("x", 1700);
       text.setAttribute("y", y);
@@ -205,11 +216,11 @@ function rebuildList() {
 
       g.appendChild(text);
 
-      var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+      text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
       text.setAttribute("text-anchor", 'end');
       text.setAttribute("x", 2800);
       text.setAttribute("y", y);
-      slam = new Number(parseInt(values[jx] * prices[jx]));
+      slam = Number(parseInt(values[jx] * prices[jx], 10));
       text.textContent = slam.toFixed(2);
 
       g.appendChild(text);
@@ -218,13 +229,13 @@ function rebuildList() {
     }
   }
 
-  var text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+  text = document.createElementNS("http://www.w3.org/2000/svg", 'text');
   text.setAttribute("text-anchor", 'end');
   text.setAttribute("font-weight", 900);
   text.setAttribute("font-size", 96);
   text.setAttribute("x", 2800);
   text.setAttribute("y", 1800);
-  slam = new Number(zSum);
+  slam = Number(zSum);
   text.textContent = slam.toFixed(2);
 
   g.appendChild(text);
@@ -232,9 +243,7 @@ function rebuildList() {
 }
 function subDates() {
 
-   var more = true, zDate = new Date(), ix = 0;
-
-   var x = 0, y = 0;
+   var more = true, zDate = new Date(), ix = 0, x = 0, y = 0;
 
    var g = document.createElementNS("http://www.w3.org/2000/svg", 'g');
        g.setAttribute("id", 'dates');
@@ -257,11 +266,11 @@ function subDates() {
    while (more) {
      ix++;
 
-     zDate = new Date(parseInt(zDate.getTime())-86400000);
+     zDate = new Date(parseInt(zDate.getTime(), 10)-86400000);
      x = (zDate.getMonth() * 305) + 106;     y = (zDate.getDate() * 80) + 126;
-     var thisDate = parseInt((zDate.getFullYear() * 10000) + ((zDate.getMonth() + 1) * 100) + zDate.getDate());
+     var thisDate = parseInt((zDate.getFullYear() * 10000) + ((zDate.getMonth() + 1) * 100) + zDate.getDate(), 10);
 
-     var rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
+     rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
      rect.setAttribute("x", x);
      rect.setAttribute("y", y);
      rect.setAttribute("width", 300);
@@ -285,7 +294,7 @@ function subDates() {
 }
 function formatT(base) {
   var m = "   JANFEBMARAPRMAJJUNJULAUGSEPOCTNOVDEC";
-  var i = parseInt(base.substr(4,2) * 3);
+  var i = parseInt(base.substr(4,2) * 3, 10);
   return base.substr(6,2) + m.substr(i, 3) + base.substr(0,4);
 }
 })();
