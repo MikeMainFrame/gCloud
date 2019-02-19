@@ -5,7 +5,7 @@
   async function handleData (what) {
     var temp = await xhrServer(what);
     var objs = JSON.parse(temp);
-    // loop thru template text slots - need to mature
+    // loop thru template text slots - need to mature ...
     var target = this.document.body.getElementsByTagName("text");
     objs.forEach(function(row) {  
       target[1].textContent = row.name;      
