@@ -28,7 +28,7 @@
       xhr.onload = function() {if (xhr.readyState === 4) serverData(xhr.responseText);};
       xhr.onerror = function() {reject(xhr.statusText)};      
       xhr.send();
-		});
+    });
   }
 }
 )(window.location.search);
