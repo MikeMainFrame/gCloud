@@ -7,21 +7,23 @@
 
   $A = explode("From: ", $mail);
   $B = explode("Date: ", $A[1]);
-  $from =$B[0];
+  $from = $B[0];
 
   $A = explode("Message-ID:", $B[1]);
   $date =$A[0];
 
-  $B = explode('boundary="', $A[1]);
-  $split = explode('"', $mail);
+  $B = explode('boundary="', $mail);
+  $A = explode('"', $B[1]);
+  $split = explode($A([0], $mail);
 
-  $orig = $split[0];
-  $head = $split[1];
-  $body = $split[2];
+  $orig = $split[1];
+  $head = $split[2];
+  $body = $split[3];
 
   file_put_contents("gs://gcloud19631205.appspot.com/mailDecoded.txt", $from . $date . $orig . $head . $body);
 
   $source = "gs://gcloud19631205.appspot.com/mcMailreply.xml";
+
   $mother = new DOMDocument;
   $mother->loadXML(file_get_contents($source));
   $root = $mother->documentElement; 
@@ -44,5 +46,3 @@
 
   $root->appendChild($reply);
   file_put_contents($source, $mother->saveXML());
-
-  include 'mcSpontane.php';
