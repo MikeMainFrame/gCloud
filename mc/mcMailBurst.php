@@ -1,28 +1,26 @@
 <?php
 
-  error_reporting(E_ALL);
-  ini_set("display_errors", 1);
-
 use google\appengine\api\mail\Message;
 
-$subject = 'Tick Tick Tick Tick';
+$subject    = 'Google Cloud Platform';
+$burst      = <<<EOT
+Hey there
+This is a campaign. Cloud solutions or cloud paradigm, will be a wild game.
+I master all variations within GCP universe.
+Cost is a lot less and a security a lot more and access is instant.
+EOT;
 
-$burst = "High speed mail processing, usning GCP"
-             . PHP_EOL . "Next message is in an hour"
-             . PHP_EOL . "passed thru " . $_SERVER['PHP_SELF'] . " " .  date(DATE_RFC2822);
-
-
-emitMail('???@gmail.com', $subject, $burst);
+emitMail(['mailReceiver'], $subject, $burst, $attachment);
 
 exit;
 
-function emitMail ($who, $subject, $body) {
+function emitMail ($who, $subject, $body, $attachment) {
 
     $message = new Message();
-    $message->setSender('masterOfTheUniverse@gcloud19631205.appspotmail.com');
+    $message->setSender('["mailSender"]@gcloud19631205.appspotmail.com');
     $message->addTo($who);
     $message->setSubject($subject);
     $message->setTextBody($body);
     $message->send();
-
+  
 }
