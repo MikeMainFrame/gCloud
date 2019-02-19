@@ -21,7 +21,7 @@ exit;
 function emitMail ($who, $subject, $body) {
 
     $message = new Message();
-    $message->setSender('masterOfTheUniverse@gcloud19631205.appspotmail.com');
+    $message->setSender('[sender]@gcloud19631205.appspotmail.com');
     $message->addTo($who);
     $message->setSubject($subject);
     $message->setTextBody($body);
