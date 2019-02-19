@@ -1,6 +1,6 @@
 (function main (what) {
  
-	handleData(what);
+  handleData(what);
 
   async function handleData (what) {
     var temp = await xhrServer(what);
