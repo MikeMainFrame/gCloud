@@ -21,5 +21,5 @@
 ?>
 </p>
 </body>
-<script src="staticdata/ba.js" defer></script>
+<script src="js/ba.js" defer></script>
 </html>
