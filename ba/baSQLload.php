@@ -1,7 +1,4 @@
 <?php
-/*
- * M.Rasch 2018 Q4
-*/
   
   $temp = file_get_contents("gs://gcloud19631205.appspot.com/insert.sql");
   $allData = explode(";\r\n", $temp);
